@@ -1,0 +1,30 @@
+{
+  "name": "gluu-ai-assistant",
+  "version": "1.0.0",
+  "description": "AI assistant for Gluu documentation using Ollama",
+  "type": "module",
+  "scripts": {
+    "ingest": "tsx src/ingestion/ingest.ts",
+    "chat": "tsx src/assistant/cli.ts",
+    "server": "tsx src/ui/server.ts",
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "dev": "tsx watch src/ui/server.ts"
+  },
+  "dependencies": {
+    "@chroma-core/default-embed": "^0.1.9",
+    "cheerio": "^1.0.0",
+    "chromadb": "^1.10.5",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.18.2",
+    "ollama": "^0.5.0"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.11.0",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3"
+  }
+}

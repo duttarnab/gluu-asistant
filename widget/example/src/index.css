@@ -1,0 +1,5 @@
+@import 'tailwindcss';
+
+/* Tailwind v4 auto-detects sources, but the widget lives outside this app's
+   root — register it so its utility classes are generated. */
+@source '../../src';
