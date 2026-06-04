@@ -60,6 +60,7 @@ GitHub repos, embeds them into a vector store, and answers questions using a loc
 | Command           | What it does                                                    |
 | ----------------- | --------------------------------------------------------------- |
 | `npm run ingest`  | Crawl docs + GitHub, embed, and store vectors in ChromaDB.      |
+| `npm run export-index` | Export the embeddings to a static file for the standalone widget. |
 | `npm run chat`    | Interactive terminal chat (`/reset`, `/stats`, `/exit`).        |
 | `npm run server`  | Start the web UI + REST/SSE API at `http://localhost:3000`.     |
 | `npm run dev`     | Same as `server`, with auto-reload on file changes.             |
@@ -116,6 +117,23 @@ import { GluuChatWidget } from '@gluu/chat-widget';
 ```
 
 See [widget/README.md](widget/README.md) for install, Tailwind setup, and props.
+
+### Self-contained widget (no server)
+
+[`widget-standalone/`](widget-standalone/) contains **`@gluu/chat-widget-standalone`**, built for
+**browser extensions** and offline use. It needs no Express server and no ChromaDB: the vector index
+is baked into a static file (`npm run export-index`), retrieval runs in the browser, and answers
+stream straight from your local **Ollama**.
+
+```tsx
+import { GluuStandaloneWidget } from '@gluu/chat-widget-standalone';
+import index from './gluu-index.json';
+
+<GluuStandaloneWidget index={index} ollamaBaseUrl="http://localhost:11434" chatModel="llama3" />
+```
+
+See [widget-standalone/README.md](widget-standalone/README.md) for the index export, Ollama CORS
+setup (`OLLAMA_ORIGINS`), and props.
 
 ## Notes & limitations
 

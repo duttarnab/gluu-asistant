@@ -1,0 +1,4 @@
+@import 'tailwindcss';
+
+/* Generate the widget's utility classes from the package source. */
+@source '../../src';
