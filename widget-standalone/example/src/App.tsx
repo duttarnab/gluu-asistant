@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { GluuStandaloneWidget } from '../../src';
 import type { BakedIndex } from '../../src';
 // The baked index. Replace the sample with your real `npm run export-index` output.
-import sampleIndex from '../../data/gluu-index.sample.json';
+import sampleIndex from '../../data/gluu-index.json';
 
 const index = sampleIndex as BakedIndex;
 

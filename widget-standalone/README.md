@@ -21,17 +21,27 @@ The only thing running is **Ollama** — the same LLM the project already uses.
 
 ---
 
-## 1. Build the baked index (one-time, in the project root)
+## 1. Build the baked index (one-time)
 
-After ingesting docs (`npm run ingest`), export the vectors ChromaDB already holds:
+The exporter ships with this package at [`scripts/export-index.ts`](scripts/export-index.ts). After
+ingesting docs in the main project (`npm run ingest`), export the vectors ChromaDB already holds —
+run it from **either** location:
 
 ```bash
-npm run export-index          # writes widget-standalone/data/gluu-index.json
+# from the project root
+npm run export-index
+
+# …or from this package
+cd widget-standalone && npm install && npm run export-index
 ```
 
-This reads the existing `nomic-embed-text` embeddings and packs them into a single JSON file
-(chunks + base64 Float32 vectors). Because the widget embeds the **query** with the same Ollama
-model, the vector spaces match. Re-run it whenever you re-ingest.
+Either way it writes `widget-standalone/data/gluu-index.json`. It reads the existing
+`nomic-embed-text` embeddings and packs them into a single JSON file (chunks + base64 Float32
+vectors). Because the widget embeds the **query** with the same Ollama model, the vector spaces
+match. Re-run it whenever you re-ingest.
+
+> Config (`CHROMA_PATH`, `CHROMA_COLLECTION`, `EMBED_MODEL`) is read from the project root's `.env`
+> or env vars, defaulting to `http://localhost:8000` / `gluu_docs` / `nomic-embed-text`.
 
 > A tiny **placeholder** `data/gluu-index.sample.json` (random vectors) ships so the package and
 > demo build without ChromaDB — replace it with the real export for meaningful answers.

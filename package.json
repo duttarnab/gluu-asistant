@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "ingest": "tsx src/ingestion/ingest.ts",
-    "export-index": "tsx src/ingestion/exportIndex.ts",
+    "export-index": "tsx widget-standalone/scripts/export-index.ts",
     "chat": "tsx src/assistant/cli.ts",
     "server": "tsx src/ui/server.ts",
     "build": "tsc",

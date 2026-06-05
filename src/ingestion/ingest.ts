@@ -26,6 +26,7 @@ const WEB_SOURCES = [
 
 const GITHUB_SOURCES = [
   { owner: 'GluuFederation', repo: 'flex', branch: 'main', subPath: 'docs' },
+  { owner: 'JanssenProject', repo: 'jans', branch: 'main', subPath: 'docs' }
 ];
 
 // ─── Main ─────────────────────────────────────────────────────────────────────
